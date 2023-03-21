@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinar Número</title>
+    <style>
+        .boton{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Adivina que número estoy pensando</h1>
+        <p>Dime un número de 3 cifras</p>
+    </div>
+    
+    <p id="record"></p>
+    <input type="button" id="comenzar" onclick="Empezar()" value="Comenzar">
+    <input type="button" id="reiniciar" onclick="Reiniciar()" value="Reiniciar Record"><br><br><br>
+    <p id="num"></p>
+        <input type="text" id="numero" class="boton"><br>
+        <input type="button" id="boton" onclick="ValidarNumero()" class="boton" value="Enviar" style:none ><br><br>
+    </label>
+    <h1><p id="resultado"></p></h1>
+
+    <script>
+        var tiempoIni,tiempoFin;
+        var centena,decena,unidad,numero;
+        var record = localStorage.getItem('tiempo');
+
+        function Reiniciar()
+        {
+            localStorage.removeItem('tiempo');
+            document.getElementById("resultado").innerHTML="";
+            document.getElementById("num").innerHTML="";
+            document.getElementById("record").innerHTML="";
+            document.getElementById("numero").style.display = "none";
+            document.getElementById("boton").style.display = "none";
+        }
+        
+        function Empezar()
+        {     
+            document.getElementById("resultado").innerHTML="";
+            document.getElementById("numero").style.display = "block";
+            document.getElementById("boton").style.display = "block";
+
+            centena = parseInt(Math.random() * 9)+1 ;
+            decena = parseInt(Math.random() * 10) ;
+            unidad = parseInt(Math.random() * 10) ;
+            numero = (centena*100)+(decena*10)+(unidad);
+
+            document.getElementById("num").innerHTML = numero;
+
+            if(record != null)
+            {
+                document.getElementById("record").innerHTML = "El record esta en : "+record+" milisegundo";
+            }
+            tiempoIni = Date.now();
+            
+        }
+
+        function ValidarNumero()
+        {            
+            let acertado;
+            let terminado = 0;
+            
+
+            while (terminado == 0)
+            {
+                let numero = document.getElementById("numero").value;
+                let cent,dec,und;
+
+                cent = parseInt(numero/100);
+                dec = parseInt((numero%100)/10);
+                und = parseInt((numero%100)%10);           
+
+                if ((cent == centena) && (dec == decena) && (unidad == und))
+                {
+                    acierto = 3;
+                    tiempoFin = Date.now();
+                    tiempoFin = tiempoFin-tiempoIni;
+                    terminado = 1;
+                    numero = 0;
+
+                } else if (((dec==decena) && (und==unidad)) || ((cent==centena) && (decena==dec)) || ((cent==centena) && (und==unidad)))
+                {
+                    acierto = 2;
+
+                } else if ((dec==decena) || (cent==centena) || (und==unidad))
+                {
+                    acierto = 1;
+
+                } else
+                {
+                    acierto = 0;
+                }
+
+                if (acierto == 3)
+                {
+                    if (record != null)
+                    {
+                        if (record > tiempoFin)
+                        {
+                            record=tiempoFin;
+                            document.getElementById("resultado").innerHTML = "Enhorabuena has conseguido nuevo record: "+record+" milisegundos";
+                            localStorage.setItem('tiempo',record);
+
+                        }else
+                        {
+                            document.getElementById("resultado").innerHTML = "Enhorabuena ha acertado en: "+tiempoFin+" milisegundos";
+                        }
+                    } else
+                    {
+                        
+                        document.getElementById("resultado").innerHTML = "Enhorabuena has conseguido nuevo record: "+tiempoFin+" milisegundos";
+                        localStorage.setItem('tiempo',tiempoFin);
+
+                    }
+                    document.getElementById("numero").style.display = "none";
+                    document.getElementById("boton").style.display = "none";
+
+                }else if ( (acierto < 3) && (acierto > 0))
+                {
+                    document.getElementById("resultado").innerHTML = "Has acertado "+acierto+" cifras";
+
+                }else if (acierto == 0)
+                {
+                    document.getElementById("resultado").innerHTML = "Has acertado "+acierto+" cifras";
+                }
+
+                document.getElementById("numero").value = "";
+                terminado = 1;
+
+            }
+            
+            
+            
+        }
+    </script>
+</body>
+</html>

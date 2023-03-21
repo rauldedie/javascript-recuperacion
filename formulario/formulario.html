@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="formulario.js"></script>
+    <link rel="stylesheet" href="formulario.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <!-- <form action="signup.php" method="post"> -->
+        <div>
+            <label>Nombre (*): </label><input class="form" type="text" id="dato0" required placeholder="Nombre">
+            <label class="error" id="error0"></label><br><br>
+
+            <label>Apellidos (*): </label><input class="form" type="text" id="dato1" required placeholder="Primer Apellido">
+            <label class="error" id="error1"></label><br><br>
+
+            <label>Correo electrónico (*): </label><input class="form" type="email" id="dato2" required placeholder="Correo electrónico">
+            <label class="error" id="error2"></label><br><br>
+                   
+            <label>PIN (*): </label><input class="form" type="password" id="dato3" required placeholder="Mínimo 8 caracteres"">
+            <label class="error" id="error3"></label><br><br>
+        
+            <label>Repetir PIN (*): </label><input class="form" type="password" id="dato4" required placeholder="Mínimo 8 caracteres">
+            <label class="error" id="error4"></label><br><br>
+            
+            <input type="checkbox" id="dato5"><label for="">Estoy de acuerdo con los datos </label>
+            <label class="error" id="error5"></label><br><br>
+            <label for="">Los campos marcados con (*) son obligatorios</label><br><br>
+        </div>
+    <button onclick="ValidarFormulario()">Validar</button>
+    <!--</form>-->
+    <div id="resultado"></div>
+    <div class="usuario" id="usuario"></div>
+</body>
+</html>
