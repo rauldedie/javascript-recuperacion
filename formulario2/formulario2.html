@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="formulario2.js"></script>
+    <link rel="stylesheet" href="formulario2.css">
+    <title>Formulario</title>
+</head>
+<body>
+    <!-- <form action="signup.php" method="post"> -->
+        <div>
+            <label>Nombre (*): </label><input class="form" type="text" id="dato0" required placeholder="Debe tener al menos 3 caracteres">
+            <label class="error" id="error0"></label><br><br>
+
+            <label>Correo electrónico (*): </label><input class="form" type="email" id="dato1" required placeholder="Correo Electrónico">
+            <label class="error" id="error1"></label><br><br>
+
+            <label>Repetir Correo electrónico (*): </label><input class="form" type="email" id="dato2" required placeholder="Repetir Correo Electrónico">
+            <label class="error" id="error2"></label><br><br>
+            
+            <label for="">Los campos marcados con (*) son obligatorios</label><br><br>
+        </div>
+    <button onclick="ValidarFormulario()">Validar</button><br><br>
+    <!--</form>-->
+    <div id="resultado"></div>
+    <div class="usuario" id="usuario"></div>
+</body>
+</html>

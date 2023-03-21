@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADIVINA CUANTOS DEDOS TENGO</title>
+    <style>
+        .boton{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>ADIVINA CUANTOS DEDOS TENGO</h1>
+    </div>
+    
+    <p id="record"></p>
+    <input type="button" id="comenzar" onclick="Empezar()" value="Comenzar">
+    <input type="button" id="reiniciar" onclick="Reiniciar()" value="Reiniciar Record"><br><br><br>
+    <p id="num"></p>
+        <input type="text" id="numero" class="boton"><br>
+        <input type="button" id="boton" onclick="ValidarNumero()" class="boton" value="Enviar" style:none ><br><br>
+    </label>
+    <h1><p id="resultado"></p></h1>
+    <h1><p id="resultado2"></p></h1>
+
+    <script>
+        var intentos = 0;        
+        var record = localStorage.getItem('intentos');
+        var dedos;
+
+        function Reiniciar()
+        {
+            localStorage.removeItem('intentos');
+            document.getElementById("resultado").innerHTML="";
+            document.getElementById("num").innerHTML="";
+            document.getElementById("record").innerHTML="";
+            document.getElementById("numero").style.display = "none";
+            document.getElementById("boton").style.display = "none";
+            intentos = 0;
+            record = 0;
+        }
+        
+        function Empezar()
+        {     
+            document.getElementById("resultado").innerHTML="";
+            document.getElementById("resultado2").innerHTML="";
+            document.getElementById("numero").style.display = "block";
+            document.getElementById("boton").style.display = "block";
+
+            dedos = parseInt(Math.random() * 10)+1 ;
+            intentos=0;
+
+            document.getElementById("num").innerHTML = dedos;
+            record = localStorage.getItem('intentos');
+            if(record != null)
+            {
+                document.getElementById("record").innerHTML = "El record esta en : "+record+" intentos";
+            }
+            
+        }
+
+        function ValidarNumero()
+        {            
+            let acertado = 0;
+            /*let terminado = 0;
+            
+
+            while (terminado == 0)
+            {*/
+                let numero = document.getElementById("numero").value;          
+
+                if (numero == dedos)
+                {
+                    acierto = 1;
+                    intentos += 1;
+                    //terminado = 1;
+                    document.getElementById("resultado").innerHTML="Has acertado en "+intentos+" intentos";
+                    record = localStorage.getItem("intentos");
+
+                    if (!record)
+                    {
+                        document.getElementById("resultado2").innerHTML="Enhorabuena Nuevo Record";
+                        localStorage.setItem('intentos',intentos);
+                    }else if (record > intentos)
+                    {
+                        document.getElementById("resultado2").innerHTML="Enhorabuena Nuevo Record";
+                        localStorage.setItem('intentos',intentos);
+
+                    }else
+
+                    document.getElementById("numero").value = "";
+                }else
+                {
+                    intentos += 1;
+                    document.getElementById("resultado").innerHTML="No es correcto, sigue intentandolo, llevas "+intentos+" intentos";
+                }
+
+                if (acierto)
+                {
+                    document.getElementById("numero").style.display = "none";
+                    document.getElementById("boton").style.display = "none";
+                }
+                //terminado = 1;   
+        }
+    </script>
+</body>
+</html>
