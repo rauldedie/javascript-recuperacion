@@ -4,14 +4,11 @@ function ValidarFormulario()
     //let entradas = document.getElementsByTagName("input");
     let entradas = [];    
     let correctopass = 1;
-    let correctodni=1;
-    let correcto=1;
-    let correctomail=1;
-    let correctofecha=1;
+    let correcto = 1;
+    let correctomail = 1;
     let correctocheck = document.getElementById("dato5").checked;
-    let usuario;
-
     let i,id,longitud;
+
     document.getElementById("usuario").innerHTML = " ";
     document.getElementById("resultado").innerHTML = " ";
     
@@ -29,6 +26,7 @@ function ValidarFormulario()
     {
             for (i=0; i<5; i++)
             {
+                //cargo en el array todos los datos introducidos por el usuario
                 entradas.push(document.getElementById("dato"+i).value);
             }
 
@@ -45,7 +43,7 @@ function ValidarFormulario()
 
                 }else if (i==2)
                 {
-                    correctomail=VerificarMail(entradas[i],i);
+                    correctomail = VerificarMail(entradas[i],i);
 
                 } else if (i==3)
                 {
@@ -64,8 +62,8 @@ function ValidarFormulario()
 function CalcularUsuario(entradas) 
 { 
     let usuario, nombre,apellido1,apellido2;
-    nombre=SinEspacios(entradas[0].toLowerCase());
-    apellidos=SinEspacios(entradas[1].toLowerCase());
+    nombre = SinEspacios(entradas[0].toLowerCase());
+    apellidos = SinEspacios(entradas[1].toLowerCase());
     console.log(entradas[0],entradas[1],entradas[2]);
     usuario = nombre.substring(0,1) + apellidos.substring(0,3) + entradas[4].substr(5,3) ;
     usuario = SinTildes(usuario);
@@ -137,19 +135,19 @@ function VerificarPassword (pass1,pass2,i)
         {
             document.getElementById(item1).innerHTML = "las contraseñas no son iguales";
             document.getElementById(item2).innerHTML = "las contraseñas no son iguales";
-            correcto=0;
+            correcto = 0;
             
         }else if (tamano1<8 || tamano2 <8)
         {
             document.getElementById(item1).innerHTML = "las contraseñas son de mínimo 8 caracteres";
             document.getElementById(item2).innerHTML = "las contraseñas son de mínimo 8 caracteres";
-            correcto=0;
+            correcto = 0;
 
         }else if(!pass1.match(valores) || !pass2.match(valores))
         {
             document.getElementById(item1).innerHTML = "solo números y letras";
             document.getElementById(item2).innerHTML = "solo números y letras";
-            correcto=0;
+            correcto = 0;
         }
 
         if(correcto)
@@ -157,12 +155,12 @@ function VerificarPassword (pass1,pass2,i)
             if (pass1.length<8)
             {
                 document.getElementById(item1).innerHTML = "La longitud mínima ha de ser 8 caracteres";
-                correcto=0;
+                correcto = 0;
             }
             if (pass2.length<8)
             {
                 document.getElementById(item2).innerHTML = "La longitud mínima ha de ser 8 caracteres";
-                correcto=0;
+                correcto = 0;
             }
         }
         return (correcto);
@@ -174,7 +172,7 @@ function VerificarMail(entrada,i)
     let correcto = 1;
     if (!correo.test(entrada))
     {
-        correcto=0;
+        correcto = 0;
         document.getElementById("error"+i).innerHTML = "El mail no es correcto" 
     }
     return (correcto);
