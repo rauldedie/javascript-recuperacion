@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"name": "javascript recuperacion",
+			"path": "../../../javascript recuperacion"
+		},
+		{
+			"name": "proyecto",
+			"path": "../../../proyecto"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "IAW2223"
+	}
+}
