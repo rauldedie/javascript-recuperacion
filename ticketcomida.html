@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>La buena Cuenta</h1>
+    <p id="netocomida"></p>
+    <p id="resultadoiva"></p>
+    <p id="total"></p>
+
+    <script>
+        //buenaCuenta
+        //Demuestra la funcion eval()
+        let comida;
+        //obtener el importe de la comida del usuario
+        comida = prompt("Cuánto cuesta la comida?");
+        //convertir el valor de comida en un número
+        comida = eval(comida);
+        comida = comida/1.10;
+        let iva = comida * 0.10;
+        let total = comida + iva;
+        document.getElementById("netocomida").innerHTML = "La commida ha costado "+comida+" €.";
+        document.getElementById("resultadoiva").innerHTML = "El iva de la comida 10% es "+iva+" €.";
+        document.getElementById("total").innerHTML = "El precio total de la comida es "+total+" €.";
+        /*alert ("La comida son €: " + comida);
+        alert ("El IVA son €" + iva);
+        alert ("El importe total son: €" + total);*/
+</script>
+
+</body>
+</html>

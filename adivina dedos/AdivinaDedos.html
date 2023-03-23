@@ -21,7 +21,8 @@
     <input type="button" id="reiniciar" onclick="Reiniciar()" value="Reiniciar Record"><br><br><br>
     <p id="num"></p>
         <input type="text" id="numero" class="boton"><br>
-        <input type="button" id="boton" onclick="ValidarNumero()" class="boton" value="Enviar" style:none ><br><br>
+        <input type="button" id="boton" onclick="ValidarNumero()" class="boton" value="Enviar" style:none >
+        <input type="button" id="boton2" onclick="Empezar()" class="boton" value="Jugar de nuevo" style:none ><br><br>
     </label>
     <h1><p id="resultado"></p></h1>
     <h1><p id="resultado2"></p></h1>
@@ -36,9 +37,11 @@
             localStorage.removeItem('intentos');
             document.getElementById("resultado").innerHTML="";
             document.getElementById("num").innerHTML="";
+            document.getElementById("numero").innerHTML="";
             document.getElementById("record").innerHTML="";
             document.getElementById("numero").style.display = "none";
             document.getElementById("boton").style.display = "none";
+            document.getElementById("boton2").style.display = "none";
             intentos = 0;
             record = 0;
         }
@@ -47,6 +50,7 @@
         {     
             document.getElementById("resultado").innerHTML="";
             document.getElementById("resultado2").innerHTML="";
+            document.getElementById("boton2").style.display = "none";
             document.getElementById("numero").style.display = "block";
             document.getElementById("boton").style.display = "block";
 
@@ -74,7 +78,7 @@
 
                 if (numero == dedos)
                 {
-                    acierto = 1;
+                    acertado = 1;
                     intentos += 1;
                     //terminado = 1;
                     document.getElementById("resultado").innerHTML="Has acertado en "+intentos+" intentos";
@@ -96,13 +100,16 @@
                 {
                     intentos += 1;
                     document.getElementById("resultado").innerHTML="No es correcto, sigue intentandolo, llevas "+intentos+" intentos";
+                    document.getElementById("numero").focus();
                 }
 
-                if (acierto)
+                if (acertado)
                 {
                     document.getElementById("numero").style.display = "none";
                     document.getElementById("boton").style.display = "none";
+                    document.getElementById("boton2").style.display = "block";
                 }
+                document.getElementById("numero").value = "";
                 //terminado = 1;   
         }
     </script>

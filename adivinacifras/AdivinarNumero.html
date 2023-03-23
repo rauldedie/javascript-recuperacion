@@ -46,6 +46,7 @@
             document.getElementById("resultado").innerHTML="";
             document.getElementById("numero").style.display = "block";
             document.getElementById("boton").style.display = "block";
+            record = localStorage.getItem('tiempo');
 
             centena = parseInt(Math.random() * 9)+1 ;
             decena = parseInt(Math.random() * 10) ;
@@ -56,88 +57,81 @@
 
             if(record != null)
             {
-                document.getElementById("record").innerHTML = "El record esta en : "+record+" milisegundo";
+                document.getElementById("record").innerHTML = "El record esta en : "+record+" segundos";
             }
-            tiempoIni = Date.now();
+            tiempoIni = Date.now()/1000;
             
         }
 
         function ValidarNumero()
         {            
             let acertado;
-            let terminado = 0;
-            
 
-            while (terminado == 0)
+            let numero = document.getElementById("numero").value;
+            let cent,dec,und;
+
+            cent = parseInt(numero/100);
+            dec = parseInt((numero%100)/10);
+            und = parseInt((numero%100)%10);           
+
+            if ((cent == centena) && (dec == decena) && (unidad == und))
             {
-                let numero = document.getElementById("numero").value;
-                let cent,dec,und;
+                acierto = 3;
+                tiempoFin = Date.now()/1000;
+                tiempoFin = tiempoFin-tiempoIni;
+                terminado = 1;
+                numero = 0;
 
-                cent = parseInt(numero/100);
-                dec = parseInt((numero%100)/10);
-                und = parseInt((numero%100)%10);           
+            } else if (((dec==decena) && (und==unidad)) || ((cent==centena) && (decena==dec)) || ((cent==centena) && (und==unidad)))
+            {
+                acierto = 2;
+                document.getElementById("numero").focus();
 
-                if ((cent == centena) && (dec == decena) && (unidad == und))
+            } else if ((dec==decena) || (cent==centena) || (und==unidad))
+            {
+                acierto = 1;
+                document.getElementById("numero").focus();
+
+            } else
+            {
+                acierto = 0;
+                document.getElementById("numero").focus();
+            }
+
+            if (acierto == 3)
+            {
+                if (record != null)
                 {
-                    acierto = 3;
-                    tiempoFin = Date.now();
-                    tiempoFin = tiempoFin-tiempoIni;
-                    terminado = 1;
-                    numero = 0;
+                    if (record > tiempoFin)
+                    {
+                        record=tiempoFin;
+                        document.getElementById("resultado").innerHTML = "Enhorabuena has conseguido nuevo record: "+record+" segundos";
+                        localStorage.setItem('tiempo',record);
 
-                } else if (((dec==decena) && (und==unidad)) || ((cent==centena) && (decena==dec)) || ((cent==centena) && (und==unidad)))
-                {
-                    acierto = 2;
-
-                } else if ((dec==decena) || (cent==centena) || (und==unidad))
-                {
-                    acierto = 1;
-
+                    }else
+                    {
+                        document.getElementById("resultado").innerHTML = "Enhorabuena ha acertado en: "+tiempoFin+" segundos";
+                    }
                 } else
                 {
-                    acierto = 0;
-                }
-
-                if (acierto == 3)
-                {
-                    if (record != null)
-                    {
-                        if (record > tiempoFin)
-                        {
-                            record=tiempoFin;
-                            document.getElementById("resultado").innerHTML = "Enhorabuena has conseguido nuevo record: "+record+" milisegundos";
-                            localStorage.setItem('tiempo',record);
-
-                        }else
-                        {
-                            document.getElementById("resultado").innerHTML = "Enhorabuena ha acertado en: "+tiempoFin+" milisegundos";
-                        }
-                    } else
-                    {
                         
-                        document.getElementById("resultado").innerHTML = "Enhorabuena has conseguido nuevo record: "+tiempoFin+" milisegundos";
-                        localStorage.setItem('tiempo',tiempoFin);
+                    document.getElementById("resultado").innerHTML = "Enhorabuena has conseguido nuevo record: "+tiempoFin+" segundos";
+                    localStorage.setItem('tiempo',tiempoFin);
 
-                    }
-                    document.getElementById("numero").style.display = "none";
-                    document.getElementById("boton").style.display = "none";
-
-                }else if ( (acierto < 3) && (acierto > 0))
-                {
-                    document.getElementById("resultado").innerHTML = "Has acertado "+acierto+" cifras";
-
-                }else if (acierto == 0)
-                {
-                    document.getElementById("resultado").innerHTML = "Has acertado "+acierto+" cifras";
                 }
+                document.getElementById("numero").style.display = "none";
+                document.getElementById("boton").style.display = "none";
 
-                document.getElementById("numero").value = "";
-                terminado = 1;
+            }else if ( (acierto < 3) && (acierto > 0))
+            {
+                document.getElementById("resultado").innerHTML = "Has acertado "+acierto+" cifras";
 
+            }else if (acierto == 0)
+            {
+                document.getElementById("resultado").innerHTML = "Has acertado "+acierto+" cifras";
             }
-            
-            
-            
+
+            document.getElementById("numero").value = "";                        
         }
     </script>
 </body>
