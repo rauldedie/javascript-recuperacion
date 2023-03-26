@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mueve el avión</title>
+    <style media="screen">
+      body {
+        background-image: url('cielo.png');
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onkeydown="gestionarTecla(event)">
+    <h1 id="mensaje">Mueve el avión con las flechas</h1>
+    <img id="avion" src="avion.png" alt="Sprite del avion"/>
+    <script>
+    	var objImage= null;
+    	function iniciar(){
+    			objImage = document.getElementById("avion"); /* Obtenemos el objeto que representa el avion */
+    			objImage.style.position='relative';
+    			objImage.style.left='1000px';
+    			objImage.style.top='300px';
+    	}
+    	function gestionarTecla(e){
+    		var codigo = e.which||e.keyCode;
+            /* Todas las teclas tienen un código numérico
+            que podemos consultar en https://keycode.info/ */
+    		switch(codigo)
+            {
+    		    case 37: //Flecha izquierda
+						moverIzquierda();
+    					break;
+    			case 38: //Flecha arriba
+    					moverArriba();
+    					break;
+    			case 39: //Flecha derecha
+    					moverDerecha();
+    					break;
+    			case 40: //Flecha abajo
+    					moverAbajo();
+    					break;
+    			}
+    		}
+    	function moverIzquierda(){
+    		objImage.style.left=parseInt(objImage.style.left)-10 +'px';
+        document.getElementById('mensaje').innerHTML = "Izquierda";
+    	}
+    	function moverArriba(){
+    	  	objImage.style.top=parseInt(objImage.style.top)-10 +'px';
+        	document.getElementById('mensaje').innerHTML = "Arriba";
+    	}
+    	function moverDerecha(){
+    	   objImage.style.left=parseInt(objImage.style.left)+10 +'px';
+         document.getElementById('mensaje').innerHTML = "Derecha";
+    	}
+    	function moverAbajo(){
+    	    objImage.style.top= parseInt(objImage.style.top)+10 +'px';
+         document.getElementById('mensaje').innerHTML = "Abajo";
+    	}
+    	window.onload = iniciar()/* Se ejecutará al cargar la página */
+    	</script>
+
+  </body>
+</html>
