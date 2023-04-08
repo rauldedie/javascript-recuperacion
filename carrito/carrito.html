@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="carrito.css"></script>
+    <script src="carrito.js"></script>
+    <title>Carrito de Compra</title>
+</head>
+<body>
+    <div id="contenedor">
+        <div id="productos">
+
+            <div class="producto">
+                <img class="imagen" src="judogiblanco.jpg" alt="Judogi Blanco">
+                <h1>Judogi Competición</h1>
+                <p class="precio">$90.00</p>
+                <p>Tela doble y costuras reforzadas</p>
+                <p>
+                    <label >Indica la cantidad:</label>
+                    <button class="boton">-</button>
+                    <input class="entrada" type="number" value="0" id="0">
+                    <button class="boton">+</button>
+                </p>
+                <p>
+                    <label>Talla:
+                        <input type="text">
+                    </label>
+                </p>
+                
+            </div>
+
+            <div class="producto">
+                <img class="imagen" src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
+                <h1>Chandal Competicion</h1>
+                <p class="precio">$40.00</p>
+                <p>Serigrafia Personalizada</p>
+                <p>
+                    <label >Indica la cantidad:</label>
+                    <button class="boton" onclick="EliminararProducto(document.getElementById(1).id)">-</button>
+                    <input class="entrada" type="number" value="0" id="1">
+                    <button class="boton" onclick="AgregarProducto(document.getElementById(1).id)">+</button>
+                </p>
+            </div>
+
+        </div>
+        <div>
+            <p>cantidad</p>
+        </div>
+    </div>
+</body>
+</html>
