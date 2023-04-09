@@ -9,7 +9,22 @@
     <title>Carrito de Compra</title>
 </head>
 <body>
-   
+        <div class="personal">
+            <label>Nombre (*): </label><input class="form" type="text" id="dato0" required placeholder="Nombre">
+            <label class="error" id="error0"></label><br><br>
+
+            <label>Apellidos (*): </label><input class="form" type="text" id="dato1" required placeholder="Primer Apellido">
+            <label class="error" id="error1"></label><br><br>
+
+            <label>Correo electrónico (*): </label><input class="form" type="email" id="dato2" required placeholder="Correo electrónico">
+            <label class="error" id="error2"></label><br><br>
+                   
+            <label>DNI (*): </label><input class="form" type="text" id="dato3" required placeholder="DNI">
+            <label class="error" id="error3"></label><br><br>
+
+            <label>Tarjeta (*): </label><input class="form" type="text" id="dato4" required placeholder="Numero de Tarjeta de credito">
+            <label class="error" id="error4"></label><br><br>
+        </div>
         <div class="productos">
 
             <div class="producto">
@@ -73,8 +88,13 @@
         <div>
             <p class="carrito">El carrito contiene los siguientes productos:</p>
             <div id="carrito"></div>
-            <p id="total"></p>
+            <p id="total" class="carrito"></p>
         </div>
+        <div>
+            <button class="btnpago" onclick="ValidarPago()">PAGAR</button>
+            <p id="resultado" class="correcto"></p>
+        </div>
+        
     
 </body>
 </html>
