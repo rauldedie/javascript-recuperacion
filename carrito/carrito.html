@@ -4,50 +4,77 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="carrito.css"></script>
+    <link rel="stylesheet" href="carrito.css">
     <script src="carrito.js"></script>
     <title>Carrito de Compra</title>
 </head>
 <body>
-    <div id="contenedor">
-        <div id="productos">
+   
+        <div class="productos">
 
             <div class="producto">
-                <img class="imagen" src="judogiblanco.jpg" alt="Judogi Blanco">
-                <h1>Judogi Competición</h1>
-                <p class="precio">$90.00</p>
-                <p>Tela doble y costuras reforzadas</p>
+                <img class="imagen" src="placabase.jpg" alt="Placa Base">
+                <h1>Placa Base</h1>
+                <p class="precio" id="precio0">140.00 €</p>
+                <p class="descripcion" id="descripcion0">Gigabyte B550 AORUS ELITE V2</p>
                 <p>
                     <label >Indica la cantidad:</label>
-                    <button class="boton">-</button>
-                    <input class="entrada" type="number" value="0" id="0">
-                    <button class="boton">+</button>
-                </p>
-                <p>
-                    <label>Talla:
-                        <input type="text">
-                    </label>
+                    <button class="boton" onclick="QuitarProducto(0)">-</button>
+                    <input class="entrada" type="number" value="0" id="0" disabled>
+                    <button class="boton" onclick="AgregarProducto(0)">+</button><br><br>
+                    <button class="boton" onclick="LlenaCarrito(0)">Añadir al carrito</button>
                 </p>
                 
             </div>
 
             <div class="producto">
-                <img class="imagen" src="jeans3.jpg" alt="Denim Jeans" style="width:100%">
-                <h1>Chandal Competicion</h1>
-                <p class="precio">$40.00</p>
-                <p>Serigrafia Personalizada</p>
+                <img class="imagen" src="micro.jpg" alt="Micro">
+                <h1>Microprocesador</h1>
+                <p class="precio" id="precio1">121.00 €</p>
+                <p class="descripcion" id="descripcion1">AMD Ryzen 5 5500 3.6GHz Box</p>
                 <p>
                     <label >Indica la cantidad:</label>
-                    <button class="boton" onclick="EliminararProducto(document.getElementById(1).id)">-</button>
-                    <input class="entrada" type="number" value="0" id="1">
-                    <button class="boton" onclick="AgregarProducto(document.getElementById(1).id)">+</button>
+                    <button class="boton" onclick="QuitarProducto(1)">-</button>
+                    <input class="entrada" type="number" value="0" id="1" disabled>
+                    <button class="boton" onclick="AgregarProducto(1)">+</button><br><br>
+                    <button class="boton" onclick="LlenaCarrito(1)">Añadir al carrito</button>
+                </p>
+            </div>
+
+            <div class="producto">
+                <img class="imagen" src="discoduro.jpg" alt="Disco Duro">
+                <h1>Disco Duro</h1>
+                <p class="precio" id="precio2">51.00 €</p>
+                <p class="descripcion" id="descripcion2">Kioxia EXCERIA 1TB SSD NVMe M.2 2280</p>
+                <p>
+                    <label >Indica la cantidad:</label>
+                    <button class="boton" onclick="QuitarProducto(2)">-</button>
+                    <input class="entrada" type="number" value="0" id="2" disabled>
+                    <button class="boton" onclick="AgregarProducto(2)">+</button><br><br>
+                    <button class="boton" onclick="LlenaCarrito(2)">Añadir al carrito</button>
+                </p>
+            </div>
+
+            <div class="producto">
+                <img class="imagen" src="memoria.jpg" alt="Memoria RAM">
+                <h1>Memoria RAM</h1>
+                <p class="precio" id="precio3">48.00 €</p>
+                <p class="descripcion" id="descripcion3">Kingston FURY Beast DDR4 3200 MHz 16GB</p>
+                <p>
+                    <label >Indica la cantidad:</label>
+                    <button class="boton" onclick="QuitarProducto(3)">-</button>
+                    <input class="entrada" type="number" value="0" id="3" disabled>
+                    <button class="boton" onclick="AgregarProducto(3)">+</button><br><br>
+                    <button class="boton" onclick="LlenaCarrito(3)">Añadir al carrito</button>
                 </p>
             </div>
 
         </div>
         <div>
-            <p>cantidad</p>
+            <p class="carrito">El carrito contiene los siguientes productos:</p>
+            <div id="carrito"></div>
+            <p id="total"></p>
         </div>
-    </div>
+    
 </body>
 </html>

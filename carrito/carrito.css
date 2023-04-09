@@ -1,11 +1,10 @@
 .producto {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
-    max-height: 300px;
     margin: auto;
     text-align: center;
     font-family: arial;
-    display: flex;
+    
 }
   
 .precio {
@@ -13,20 +12,17 @@
     font-size: 22px;
 }
 
-.imagen{
-    width: 280px;
-    height: 280px;
-}
+
 .boton {
     border: none;
     outline: 0;
-    padding: 12px;
+    padding: 5px;
     color: white;
     background-color: #000;
     text-align: center;
     cursor: pointer;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
 }
   
 .boton:hover {
@@ -35,13 +31,36 @@
 
 .productos{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom:10px ;    
 }
 .entrada{
-    size: 5px;
+    size: 3px;
+    text-align: center;
+    
 }
-/*  input[type="number"]
+body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.descripcion{
+    font-size: 14px;
+}
+
+.carrito{
+    font-weight: bold;
+    font-size: 26px;
+}
+
+/*input[type="number"]
 {
-    -webkit-appearance: textfield !important;
+    -webkit-appearance: textfield;
     margin: 0;
-    -moz-appearance:textfield !important;
+    -moz-appearance:textfield;
 }*/
