@@ -35,17 +35,17 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: baseline;
-    margin-bottom:10px ;    
+    margin: 0%;
+     
 }
 .entrada{
     size: 3px;
-    text-align: center;
-    
+    text-align: center;    
 }
+
 body{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -85,3 +85,20 @@ body{
 .btnpago:hover{
     opacity: 0.7;
 }
+
+.personal{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.carro{
+    margin-left: 1%;
+    align-items: center;
+    margin-top: 0%;
+}
+
+.formulario{
+    padding-top: 3%;
+    margin-left: 10%;
+}
+

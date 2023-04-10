@@ -9,7 +9,16 @@
     <title>Carrito de Compra</title>
 </head>
 <body>
-        <div class="personal">
+    <div class="personal">
+        
+        <div class="carro">
+            <p class="carrito">El carrito contiene los siguientes productos:</p>
+            <div id="carrito"></div>
+            <p id="total" class="carrito"></p>
+            
+        </div>
+
+        <div class="formulario">
             <label>Nombre (*): </label><input class="form" type="text" id="dato0" required placeholder="Nombre">
             <label class="error" id="error0"></label><br><br>
 
@@ -23,77 +32,73 @@
             <label class="error" id="error3"></label><br><br>
 
             <label>Tarjeta (*): </label><input class="form" type="text" id="dato4" required placeholder="Numero de Tarjeta de credito">
-            <label class="error" id="error4"></label><br><br>
-        </div>
-        <div class="productos">
-
-            <div class="producto">
-                <img class="imagen" src="placabase.jpg" alt="Placa Base">
-                <h1>Placa Base</h1>
-                <p class="precio" id="precio0">140.00 €</p>
-                <p class="descripcion" id="descripcion0">Gigabyte B550 AORUS ELITE V2</p>
-                <p>
-                    <label >Indica la cantidad:</label>
-                    <button class="boton" onclick="QuitarProducto(0)">-</button>
-                    <input class="entrada" type="number" value="0" id="0" disabled>
-                    <button class="boton" onclick="AgregarProducto(0)">+</button><br><br>
-                    <button class="boton" onclick="LlenaCarrito(0)">Añadir al carrito</button>
-                </p>
-                
-            </div>
-
-            <div class="producto">
-                <img class="imagen" src="micro.jpg" alt="Micro">
-                <h1>Microprocesador</h1>
-                <p class="precio" id="precio1">121.00 €</p>
-                <p class="descripcion" id="descripcion1">AMD Ryzen 5 5500 3.6GHz Box</p>
-                <p>
-                    <label >Indica la cantidad:</label>
-                    <button class="boton" onclick="QuitarProducto(1)">-</button>
-                    <input class="entrada" type="number" value="0" id="1" disabled>
-                    <button class="boton" onclick="AgregarProducto(1)">+</button><br><br>
-                    <button class="boton" onclick="LlenaCarrito(1)">Añadir al carrito</button>
-                </p>
-            </div>
-
-            <div class="producto">
-                <img class="imagen" src="discoduro.jpg" alt="Disco Duro">
-                <h1>Disco Duro</h1>
-                <p class="precio" id="precio2">51.00 €</p>
-                <p class="descripcion" id="descripcion2">Kioxia EXCERIA 1TB SSD NVMe M.2 2280</p>
-                <p>
-                    <label >Indica la cantidad:</label>
-                    <button class="boton" onclick="QuitarProducto(2)">-</button>
-                    <input class="entrada" type="number" value="0" id="2" disabled>
-                    <button class="boton" onclick="AgregarProducto(2)">+</button><br><br>
-                    <button class="boton" onclick="LlenaCarrito(2)">Añadir al carrito</button>
-                </p>
-            </div>
-
-            <div class="producto">
-                <img class="imagen" src="memoria.jpg" alt="Memoria RAM">
-                <h1>Memoria RAM</h1>
-                <p class="precio" id="precio3">48.00 €</p>
-                <p class="descripcion" id="descripcion3">Kingston FURY Beast DDR4 3200 MHz 16GB</p>
-                <p>
-                    <label >Indica la cantidad:</label>
-                    <button class="boton" onclick="QuitarProducto(3)">-</button>
-                    <input class="entrada" type="number" value="0" id="3" disabled>
-                    <button class="boton" onclick="AgregarProducto(3)">+</button><br><br>
-                    <button class="boton" onclick="LlenaCarrito(3)">Añadir al carrito</button>
-                </p>
-            </div>
-
-        </div>
-        <div>
-            <p class="carrito">El carrito contiene los siguientes productos:</p>
-            <div id="carrito"></div>
-            <p id="total" class="carrito"></p>
-        </div>
-        <div>
-            <button class="btnpago" onclick="ValidarPago()">PAGAR</button>
+            <label class="error" id="error4"></label>
+            <p><button class="btnpago" onclick="ValidarPago()">PAGAR</button></p>
             <p id="resultado" class="correcto"></p>
         </div>
+
+    </div>
+    <div class="productos">
+
+        <div class="producto">
+            <img class="imagen" src="placabase.jpg" alt="Placa Base">
+            <h1>Placa Base</h1>
+            <p class="precio" id="precio0">140.00 €</p>
+            <p class="descripcion" id="descripcion0">Gigabyte B550 AORUS ELITE V2</p>
+            <p>
+                <label >Indica la cantidad:</label>
+                <button class="boton" onclick="QuitarProducto(0)">-</button>
+                <input class="entrada" type="number" value="0" id="0" disabled>
+                <button class="boton" onclick="AgregarProducto(0)">+</button><br><br>
+                <button class="boton" onclick="LlenaCarrito(0)">Añadir al carrito</button>
+            </p>
+                
+        </div>
+
+        <div class="producto">
+            <img class="imagen" src="micro.jpg" alt="Micro">
+            <h1>Microprocesador</h1>
+            <p class="precio" id="precio1">121.00 €</p>
+            <p class="descripcion" id="descripcion1">AMD Ryzen 5 5500 3.6GHz Box</p>
+            <p>
+                <label >Indica la cantidad:</label>
+                <button class="boton" onclick="QuitarProducto(1)">-</button>
+                <input class="entrada" type="number" value="0" id="1" disabled>
+                <button class="boton" onclick="AgregarProducto(1)">+</button><br><br>
+                <button class="boton" onclick="LlenaCarrito(1)">Añadir al carrito</button>
+            </p>
+        </div>
+
+        <div class="producto">
+            <img class="imagen" src="discoduro.jpg" alt="Disco Duro">
+            <h1>Disco Duro</h1>
+            <p class="precio" id="precio2">51.00 €</p>
+            <p class="descripcion" id="descripcion2">Kioxia EXCERIA 1TB SSD NVMe M.2 2280</p>
+            <p>
+                <label >Indica la cantidad:</label>
+                <button class="boton" onclick="QuitarProducto(2)">-</button>
+                <input class="entrada" type="number" value="0" id="2" disabled>
+                <button class="boton" onclick="AgregarProducto(2)">+</button><br><br>
+                <button class="boton" onclick="LlenaCarrito(2)">Añadir al carrito</button>
+            </p>
+        </div>
+
+        <div class="producto">
+            <img class="imagen" src="memoria.jpg" alt="Memoria RAM">
+            <h1>Memoria RAM</h1>
+            <p class="precio" id="precio3">48.00 €</p>
+            <p class="descripcion" id="descripcion3">Kingston FURY Beast DDR4 3200 MHz 16GB</p>
+            <p>
+                <label >Indica la cantidad:</label>
+                <button class="boton" onclick="QuitarProducto(3)">-</button>
+                <input class="entrada" type="number" value="0" id="3" disabled>
+                <button class="boton" onclick="AgregarProducto(3)">+</button><br><br>
+                <button class="boton" onclick="LlenaCarrito(3)">Añadir al carrito</button>
+            </p>
+        </div>
+
+    </div>
+        
         
     
 </body>
