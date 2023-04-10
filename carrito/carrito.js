@@ -11,7 +11,10 @@ var producto = [{"id":0,"descripcion":"placa","precio":140.00,"cantidad":0,"tota
 {"id":2,"descripcion":"hd","precio":51.00,"cantidad":0,"total":0},
 {"id":3,"descripcion":"mem","precio":48.00,"cantidad":0,"total":0}
 ];
-producto = JSON.parse(localStorage.getItem("carrito"));
+
+//producto = JSON.parse(localStorage.getItem("carrito"));
+
+window.addEventListener('load', function() {RefrescarCarrito()});
 
 function AgregarProducto(id){
     
@@ -73,7 +76,12 @@ function QuitarProducto(id){
 }
 
 function LlenaCarrito(id) {
-    producto = JSON.parse(localStorage.getItem("carrito"));
+    //let productoaux = JSON.parse(localStorage.getItem("carrito"));
+
+    if(JSON.parse(localStorage.getItem("carrito")))
+    {
+        producto=JSON.parse(localStorage.getItem("carrito"));
+    }
 
     switch (id)
     {
@@ -137,7 +145,12 @@ function LlenaCarrito(id) {
 function RefrescarCarrito()
 {  
     document.getElementById("carrito").innerHTML = " ";
-    producto = JSON.parse(localStorage.getItem("carrito"));
+    //let productoaux = JSON.parse(localStorage.getItem("carrito"));
+
+    if (JSON.parse(localStorage.getItem("carrito")))
+    {
+        producto=JSON.parse(localStorage.getItem("carrito"));;
+    }
     
     let carro,addlinea;
     let fin = producto.length;
@@ -174,7 +187,7 @@ function RefrescarCarrito()
     iva = iva.toFixed(2);
 
     document.getElementById("total").innerHTML = "Precio Base: "+base+" €.  Iva 21%: "+iva+" €. Total: "+suma+" €";
-
+    
     
 }
 
@@ -302,4 +315,3 @@ function ValidarTarjeta(numero,i){
     
 }
 
-window.addEventListener('load', function() {RefrescarCarrito()});
